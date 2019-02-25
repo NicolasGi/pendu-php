@@ -11,18 +11,18 @@
 <body>
 
     <div>
-        <h1>Le pendu : Trouves le mots en moins de <?= $MAX_TRIALS?> coups</h1>
+        <h1><?=GAME_TITLE;?> : Trouves le mots en moins de <?= MAX_TRIALS; ?> coups</h1>
     </div>
     <div>
         <p>
-            Le mots à deviner compte X lettres: **********</p>
+            Le mots à deviner compte <?= $letterNbre; ?> lettres: <?= $remplacement;?></p>
     </div>
     <div>
         <img src="images/pendu0.gif" alt="x" srcset="">
     </div>
 
     <div>
-        <?php include 'partials/form.php'?>
+        <?php include 'partials/form.php';?>
         <!-- Si on a perdu -> inserer le msg de défaite -->
         <!-- Si on a gagné -> inserer le msg de victoire -->
     </div>

@@ -11,11 +11,11 @@
             <!-- repeter 26 fois-->
                 <?php foreach($lettersArray as $letter => $status):?>
                     <?php if ($status):?>
-                        <option value="<?= $letter ?>"><?= $letter?></option>
+                        <option value="<?= $letter; ?>"><?= $letter;?></option>
                     <?php endif; ?>
-                <?php endforeach ?>
+                <?php endforeach; ?>
             </select>
-            <input type="hidden" name="lettersArray" value="<?= $serializedLettersArray ?>"> 
+            <input type="hidden" name="lettersArray" value="<?= $serializedLettersArray; ?>"> 
             <input type="submit" value="envoyez la lettre">
         </label>
     </fieldset>
