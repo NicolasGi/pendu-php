@@ -1,4 +1,6 @@
 <?php 
+$gameOver = false;
+$gameWon  = false;
 $lettersArray = [
         'a' => true,
         'b' => true,
@@ -28,7 +30,11 @@ $lettersArray = [
         'z' => true
 ];
 
-$wordArray    = getWordsArray();// recup l'array de mots
-$word         = getWord(getRandomIndex($wordArray), $wordArray); // recup le mot avec l'index aléatoire et l'array des mots pour avoir un ARRAY[$index]
-$letterNbre   = strlen($word)-1;
-$remplacement = getRemplacement($letterNbre);
+$wordArray          = getWordsArray();// recup l'array de mots
+$wordIndex          = getRandomIndex($wordArray);
+$word               = strtolower(getWord($wordIndex, $wordArray)); // recup le mot avec l'index aléatoire et l'array des mots pour avoir un ARRAY[$index]
+$lettersCount       = strlen($word);
+$remplacementString = getRemplacementString($lettersCount);
+$remainingTrials    = MAX_TRIALS;
+$trials             = 0;
+$triedLetters       = '';

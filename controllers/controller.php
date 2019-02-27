@@ -7,5 +7,5 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
 }else {
     die('Vous n’avez rien à faire ici');
 }
-
+//controller produit des valeurs a nos variable
 $serializedLettersArray = urlencode(serialize($lettersArray)); /* on convertit un array en chaine de caractère pour pouvoir la contenir dans une variable pour sauvegarder le nouvel array en chaine de caractère. */

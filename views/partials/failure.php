@@ -1,6 +1,6 @@
 <div>
     <p>
-        OOps&nbsp;! Tu sembles bien mort&nbsp;! Le mot à trouver était «&nbsp; <b>X</b>». 
-        <a href="index.php">Recommence&nbsp;</a>
+        OOps&nbsp;! Tu sembles bien mort&nbsp;! Le mot à trouver était «&nbsp; <b><?= $word; ?></b>». 
+        <a href="<?php $_SERVER['PHP_SELF'] ?>">Recommence&nbsp;</a>
     </p>
 </div>

@@ -15,17 +15,24 @@
     </div>
     <div>
         <p>
-            Le mots à deviner compte <?= $letterNbre; ?> lettres: <?= $remplacement;?></p>
+            Le mots à deviner compte <?= $lettersCount; ?> lettres: <?=  $remplacementString;?></p>
     </div>
     <div>
-        <img src="images/pendu0.gif" alt="x" srcset="">
+        <img src="images/pendu<?= $trials; ?>.gif" alt="x" srcset="">
+    </div>
+    <div>
+        <p>Voici les lettre que tu as déjà essayées : <?= $triedLetters; ?></p>
     </div>
 
     <div>
-        <?php include 'partials/form.php';?>
-        <!-- Si on a perdu -> inserer le msg de défaite -->
-        <!-- Si on a gagné -> inserer le msg de victoire -->
+        <?php if ($gameOver) {
+                include 'partials/failure.php';
+        }elseif ($gameWon) {
+                include 'partials/success.php';
+        }else {
+                include 'partials/form.php';
+
+            }?>
     </div>
 </body>
-
 </html>

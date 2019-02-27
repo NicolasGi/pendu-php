@@ -2,7 +2,7 @@
 
 function getWordsArray()
 {
-    return file(FILE_PATH);
+    return file(FILE_PATH, FILE_IGNORE_NEW_LINES);
 }
 
 function getRandomIndex($wordsArray) //recupere un nombre aléatoire
@@ -15,12 +15,7 @@ function getWord($index, $wordsArray)
     return $wordsArray[$index];
 }
 
-function getRemplacement($letterNbre)
+function getRemplacementString($lettersCount)
 {
-    return  str_repeat(REPLACEMENT, $letterNbre) ;
-}
-
-function getNumberLetter($word)
-{
-    return strlen($word)-1;
+    return  str_repeat(REPLACEMENT_CHAR, $lettersCount) ;
 }
