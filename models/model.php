@@ -1,8 +1,8 @@
 <?php 
 
-function getWordsArray()
+function setWordsArray()
 {
-    return file(FILE_PATH, FILE_IGNORE_NEW_LINES);
+    $_SESSION['wordArray'] = file(FILE_PATH, FILE_IGNORE_NEW_LINES);
 }
 
 function getRandomIndex($wordsArray) //recupere un nombre aléatoire

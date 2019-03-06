@@ -1,42 +1,29 @@
 <?php
 $gameOver = false;
-$gameWon = false;
-
-if(isset($_COOKIE['gameData'])){
-     $gameData = $_COOKIE['gameData'];
-     extract($gameData);
-}else{
-    die('Apparamment vous essayez d’accèder a cette page d’un moiyen non prévus');
-}
-
+$gameWon  = false;
 
 $triedLetter  = $_POST['triedLetter']; // on stocke la lettre de la method POST la lettre essayer
-$lettersArray[$triedLetter] = false;// pour ensuite  lui retourner la valeur false pour supprimer l'<option> dans index
+$_SESSION['triedLetters'] .= $triedLetter;
+$_SESSION['lettersArray'][$triedLetter] = false;
 
-$triedLetters .= $triedLetter;
-
-$wordArray = getWordsArray();// recup l'array de mots
-$word      = strtolower(getWord($wordIndex, $wordArray));
-$letterFound        = false;
+$letterFound = false;
 
 
-for ($i=0; $i < $lettersCount; $i++) { 
-    $letter = substr($word, $i, 1);
-    if($triedLetter === $letter){
+for ($i=0; $i < $_SESSION['lettersCount']; $i++) { 
+    $letter = substr($_SESSION['word'], $i, 1);
+    if($triedLetter === strtolower($letter)){
         $letterFound = true;
-        $remplacementString = substr_replace($remplacementString, $triedLetter, $i, 1);
+        $_SESSION['remplacementString'] = substr_replace($_SESSION['remplacementString'], $triedLetter, $i, 1);
     }
 }
 if ($letterFound=== false) {
-    $trials++;
+    $_SESSION['trials']++;
 }
 
-$remainingTrials = MAX_TRIALS - $trials;
+$remainingTrials = MAX_TRIALS - $_SESSION['trials'];
 
 if ($remainingTrials  <= 0) {
     $gameOver = true;
-}elseif ($word === $remplacementString) {
+}elseif (strtolower($_SESSION['word']) === strtolower($_SESSION['remplacementString'])) {
     $gameWon = true;
 }
-
-setcookie('gameData', encode(compact('wordIndex', 'lettersArray', 'lettersCount', 'triedLetters', 'remplacementString', 'trials')));    

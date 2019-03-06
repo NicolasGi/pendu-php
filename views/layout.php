@@ -15,13 +15,13 @@
     </div>
     <div>
         <p>
-            Le mots à deviner compte <?= $lettersCount; ?> lettres: <?=  $remplacementString;?></p>
+            Le mots à deviner compte <?= $_SESSION['lettersCount']; ?> lettres: <?=  $_SESSION['remplacementString'];?></p>
     </div>
     <div>
-        <img src="images/pendu<?= $trials; ?>.gif" alt="x" srcset="">
+        <img src="images/pendu<?= $_SESSION['trials']; ?>.gif" alt="x" srcset="">
     </div>
     <div>
-        <p>Voici les lettre que tu as déjà essayées : <?= $triedLetters; ?></p>
+        <p>Voici les lettre que tu as déjà essayées : <?= $_SESSION['triedLetters']; ?></p>
     </div>
 
     <div>
@@ -32,7 +32,7 @@
         }else {
                 include 'partials/form.php';
 
-            }?>
+        }?>
     </div>
 </body>
 </html>

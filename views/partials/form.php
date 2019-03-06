@@ -9,7 +9,7 @@
             Choisis ta lettre
             <select name="triedLetter" id="triedLetter">
             <!-- repeter 26 fois-->
-                <?php foreach($lettersArray as $letter => $status):?>
+                <?php foreach($_SESSION['lettersArray'] as $letter => $status):?>
                     <?php if ($status):?>
                         <option value="<?= $letter; ?>"><?= $letter;?></option>
                     <?php endif; ?>
