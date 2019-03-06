@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 function getWordsArray()
 {
@@ -18,4 +18,14 @@ function getWord($index, $wordsArray)
 function getRemplacementString($lettersCount)
 {
     return  str_repeat(REPLACEMENT_CHAR, $lettersCount) ;
+}
+
+function encode($value)
+{
+    return urlencode(serialize($value));
+}
+
+function decode($value)
+{
+    return unserialize(urldecode($value));
 }

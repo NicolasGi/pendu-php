@@ -2,22 +2,23 @@
 $gameOver = false;
 $gameWon = false;
 
-$lettersArray = unserialize(urldecode($_POST['lettersArray'])); // on decouvertit pour reavoir un array 
+if(isset($_COOKIE['gameData'])){
+     $gameData = $_COOKIE['gameData'];
+     extract($gameData);
+}else{
+    die('Apparamment vous essayez d’accèder a cette page d’un moiyen non prévus');
+}
+
+
 $triedLetter  = $_POST['triedLetter']; // on stocke la lettre de la method POST la lettre essayer
 $lettersArray[$triedLetter] = false;// pour ensuite  lui retourner la valeur false pour supprimer l'<option> dans index
 
-$triedLetters  = $_POST['triedLetters'];
 $triedLetters .= $triedLetter;
 
 $wordArray = getWordsArray();// recup l'array de mots
-$wordIndex = $_POST['wordIndex'];
 $word      = strtolower(getWord($wordIndex, $wordArray));
-
-$lettersCount       = $_POST['lettersCount'];
-$remplacementString = $_POST['remplacementString'];
 $letterFound        = false;
-$trials             = $_POST['trials'];
-$remainingTrials    = $_POST['remainingTrials'];
+
 
 for ($i=0; $i < $lettersCount; $i++) { 
     $letter = substr($word, $i, 1);
@@ -37,3 +38,5 @@ if ($remainingTrials  <= 0) {
 }elseif ($word === $remplacementString) {
     $gameWon = true;
 }
+
+setcookie('gameData', encode(compact('wordIndex', 'lettersArray', 'lettersCount', 'triedLetters', 'remplacementString', 'trials')));    
